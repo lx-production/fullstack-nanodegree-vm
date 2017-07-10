@@ -1,1 +1,11 @@
-Place your catalog project in this directory.
+# Catalog
+
+### How to Run
+
+```sh
+$ python create_db.py
+```
+
+```sh
+$ python application.py
+```

@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+	<div class="banner-main">
+		<div class="title">
+			<h1>Catalog</h1>
+		</div>
+	</div>
+
+<div class = 'flash'>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</div>
+
+
+<!-- Display categories -->
+<div class="wrapper">
+
+	<nav id="sidebar">
+		<a href="{{url_for('newCategory')}}">
+			<button class="btn btn-default" id="new-restaurant">
+				<span class="glyphicon glyphicon-th" aria-hidden="true"></span>Add Category
+			</button>
+		</a>
+
+
+		<ul class="list-unstyled components">
+		{% for category in categories %}
+			<li>
+				<a class="cats" href = "{{url_for('showCategory', category_id = category.id)}}">
+				{{category.name}}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+	</nav>
+
+<!-- Display latest items -->
+	<div id="content">
+	  <h3>Latest Items</h3><br>
+		{% for item in items %}
+			<li class='list-unstyled'>
+				<a class="items" href="{{url_for('showCategory', category_id = item.category_id)}}">{{item.name}} ({{item.serialize['category']}})</a>
+			</li>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
