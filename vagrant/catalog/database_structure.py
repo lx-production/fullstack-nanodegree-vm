@@ -21,7 +21,7 @@ class Category(Base):
     created_by = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
     created_on = Column(DateTime, default=func.now())
-    items = relationship('Item')
+    items = relationship("Item", cascade="all, delete-orphan")
 
     @property
     def serialize(self):
@@ -58,6 +58,7 @@ class Item(Base):
             'created_by': self.user.name,
             'created_on': str(self.created_on),
         }
+
 
 engine = create_engine('sqlite:///database.db')
 Base.metadata.create_all(engine)

@@ -1,5 +1,15 @@
 # Catalog
 
+### Description
+Basic Python app framework with database, CRUD opperations, JSON API, Google and Facebook login.
+
+### Requirements
+* Python
+* Vagrant
+* Flask
+* SQLAlchemy
+* Sqlite3
+
 ### How to Run
 
 ```sh
